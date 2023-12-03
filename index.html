@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <title>Salary Calculator</title>
 </head>
+
 <body>
   <header>
     <h1>Salary Calculator</h1>
   </header>
   <main>
     <h2>Add Employee</h2>
+    <form>
+      <input data-test id="firstNameInput" placeholder="First Name">
+
+      <input data-test id="lastNameInput" placeholder="Last Name">
+
+      <input data-test id="idInput" placeholder="ID">
+
+      <input data-test id="titleInput" placeholder="Title">
+
+      <input data-test id="annualSalaryInput" placeholder="Annual Salary">
+
+      <button data-testid="submitButton">Submit</button>
+    </form>
+
     <h2>Employees</h2>
+
   </main>
   <footer>
     <p>Total Monthly</p>
+    <table>
+
+    </table>
+
+
+    <!--THIS IS WHERE THE DATA WILL BE RENDERED-->
+    </div>
+
+    <button>Delete</button>
   </footer>
+  <script src="calculator.js"></script>
 </body>
+
 </html>
