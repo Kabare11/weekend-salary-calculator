@@ -2,6 +2,7 @@
 console.log('JS FILE LOADED')
 
 const form = document.querySelector('form')
+const tbody = document.querySelector('tbody')
 
 function addNewDate(event) {
     event.preventDefault();
@@ -10,7 +11,18 @@ function addNewDate(event) {
     const id = document.getElementById("idInput").value;
     const title = document.getElementById("titleInput").value;
     const annualsalary = document.getElementById("annualSalaryInput").value;
-    alert('firstname + lastname + id + title + annualsalary');
+    tbody.innerHTML += `
+
+<td>${firstName}</td>
+<td>${lastName}</td>
+<td>${id}</td>
+<td>${title}</td>
+<td>${annualsalary}</td>
+<td>button class= "delete-btn">Delete</></td>
+
+
+
+`
 
     //alert('HAYEEY DOOLIGA')
 }
