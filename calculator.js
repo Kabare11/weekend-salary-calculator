@@ -10,7 +10,7 @@ function addNewDate(event) {
     const id = document.getElementById("idInput").value;
     const title = document.getElementById("titleInput").value;
     const annualsalary = document.getElementById("annualSalaryInput").value;
-    alert('firstname + lastname + id + title + annualsalary')
+    alert('firstname + lastname + id + title + annualsalary');
 
     //alert('HAYEEY DOOLIGA')
 }
