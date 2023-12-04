@@ -27,10 +27,10 @@ function submitForm(event) {
     </tr>`
 
     // "100" + "100" => "100100" // strings are getting concatenated
-    // +"100" + +"100" => 200 // converting string to a number, we use a + at start
+    // Number "100" + +"100" => 200 // converting string to a number, we use a Number at start
 
     // calculating monthly expenses
-    monthlyExpenses += +annualSalaryInput.value
+    monthlyExpenses += Number(annualSalaryInput.value)
 
     // printing the monthly expenses inside the HTML
     monthlyTotal.innerHTML = monthlyExpenses
