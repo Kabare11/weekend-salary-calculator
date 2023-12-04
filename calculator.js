@@ -1,39 +1,58 @@
 
-console.log('JS FILE LOADED')
+const form = document.getElementById("form")
 
-const form = document.querySelector('form');
-const tbody = document.querySelector('tbody');
-const table = document.querySelector('table');
+const firstNameInput = document.getElementById("firstNameInput")
+const lastNameInput = document.getElementById("lastNameInput")
+const idInput = document.getElementById("idInput")
+const titleInput = document.getElementById("titleInput")
+const annualSalaryInput = document.getElementById("annualSalaryInput")
+const tableBody = document.getElementById("tableBody")
+const monthlyTotal = document.getElementById("monthly-total")
 
-function addNewDate(event) {
-    event.preventDefault();
-    const firstName = document.getElementById("firstNameInput").value;
-    const lastName = document.getElementById("lastNameInput").value;
-    const id = document.getElementById("idInput").value;
-    const title = document.getElementById("titleInput").value;
-    const annualsalary = document.getElementById("annualSalaryInput").value;
-    tbody.innerHTML += `
-<tr>
+form.addEventListener("submit", submitForm);
 
-<td>${firstName}</td>
-<td>${lastName}</td>
-<td>${id}</td>
-<td>${title}</td>
-<td>${annualsalary}</td>
-<button class="deleteBtn">Delete</button>
+let monthlyExpenses = 0
 
+function submitForm(event) {
+    event.preventDefault()
 
+    // adding the employee
+    tableBody.innerHTML += `<tr>
+    <td>${firstNameInput.value}</td>
+    <td>${lastNameInput.value}</td>
+    <td>${idInput.value}</td>
+    <td>${titleInput.value}</td>
+    <td>${annualSalaryInput.value}</td>
+    <td><button onclick="deleteEmployee(this)">Delete</button></td>
+    </tr>`
 
+    // "100" + "100" => "100100" // strings are getting concatenated
+    // +"100" + +"100" => 200 // converting string to a number, we use a + at start
 
-</tr>
+    // calculating monthly expenses
+    monthlyExpenses += +annualSalaryInput.value
 
-`;
+    // printing the monthly expenses inside the HTML
+    monthlyTotal.innerHTML = monthlyExpenses
 
-    function onDeleteRow(event) {
-        event.preventDefault()
+    // resetting the form after employee is added
+    firstNameInput.value = ""
+    lastNameInput.value = ""
+    idInput.value = 0
+    titleInput.value = ""
+    annualSalaryInput.value = 0
+
+    // if monthlyExpenses more than 20,000 it will turn the color red
+    if (monthlyExpenses > 20000) {
+        addColor()
     }
-
-    //alert('HAYEEY DOOLIGA')
 }
-form.addEventListener('submit', addNewDate)
-table.addEventListener('click', onDeleteRow)
+
+function deleteEmployee(e) {
+    const targettedEmployee = e.parentElement.parentElement
+    tableBody.removeChild(targettedEmployee)
+}
+
+function addColor() {
+    monthlyTotal.classList.add("red")
+}
