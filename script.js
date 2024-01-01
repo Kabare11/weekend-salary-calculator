@@ -7,7 +7,8 @@ const idInput = document.getElementById("idInput")
 const titleInput = document.getElementById("titleInput")
 const annualSalaryInput = document.getElementById("annualSalaryInput")
 const tableBody = document.getElementById("tableBody")
-const monthlyTotal = document.getElementById("monthly-total")
+const monthlyTotal = document.getElementById("totalMonthlyNumber")
+const footer = document.getElementById("monthlyTotalFooter")
 
 form.addEventListener("submit", submitForm);
 
@@ -30,10 +31,10 @@ function submitForm(event) {
     // Number "100" + +"100" => 200 // converting string to a number, we use a Number at start
 
     // calculating monthly expenses
-    monthlyExpenses += Number(annualSalaryInput.value)
+    monthlyExpenses += Number(annualSalaryInput.value / 12)
 
     // printing the monthly expenses inside the HTML
-    monthlyTotal.innerHTML = monthlyExpenses
+    footer.innerHTML = `Total Monthly: $${monthlyExpenses}`
 
     // resetting the form after employee is added
     firstNameInput.value = ""
@@ -54,5 +55,5 @@ function deleteEmployee(e) {
 }
 
 function addColor() {
-    monthlyTotal.classList.add("red")
+    footer.classList.add("over-budget")
 }

@@ -19,7 +19,7 @@ let container
 describe(`Weekend Salary Calculator:`, () => {
   beforeAll(() => {
     // Silence console.log statements while the tests run:
-    console.log = () => {}
+    console.log = () => { }
   })
 
   beforeEach(() => {
@@ -56,11 +56,11 @@ describe(`Weekend Salary Calculator:`, () => {
   ]
 
   // This helper function:
-    // 1. Selects all five employee inputs.
-    // 2. Populates the inputs with data from the employee that
-    //    gets passed in as an argument.
-    // 3. Selects the submit button.
-    // 4. Clicks the submit button.
+  // 1. Selects all five employee inputs.
+  // 2. Populates the inputs with data from the employee that
+  //    gets passed in as an argument.
+  // 3. Selects the submit button.
+  // 4. Clicks the submit button.
   function submitEmployee(container, employee) {
     // Select all five employee inputs:
     const firstNameInput = getByTestId(container, 'firstNameInput')
@@ -68,24 +68,24 @@ describe(`Weekend Salary Calculator:`, () => {
     const idInput = getByTestId(container, 'idInput')
     const titleInput = getByTestId(container, 'titleInput')
     const annualSalaryInput = getByTestId(container, 'annualSalaryInput')
-    
+
     // Populate the inputs with employee data:
-    fireEvent.change(firstNameInput, {target: {value: employee.firstName}})
-    fireEvent.change(lastNameInput, {target: {value: employee.lastName}})
-    fireEvent.change(idInput, {target: {value: employee.id}})
-    fireEvent.change(titleInput, {target: {value: employee.title}})
-    fireEvent.change(annualSalaryInput, {target: {value: employee.annualSalary}})
-    
+    fireEvent.change(firstNameInput, { target: { value: employee.firstName } })
+    fireEvent.change(lastNameInput, { target: { value: employee.lastName } })
+    fireEvent.change(idInput, { target: { value: employee.id } })
+    fireEvent.change(titleInput, { target: { value: employee.title } })
+    fireEvent.change(annualSalaryInput, { target: { value: employee.annualSalary } })
+
     // Select the submit button:
     const submitButton = getByTestId(container, 'submitButton')
-    
+
     // Click the submit button:
     submitButton.click()
   }
 
   it(`Adds a single new employee's data to the table`, () => {
     const table = container.querySelector('table')
-    
+
     submitEmployee(container, testEmployees[0])
 
     // Verify that the new employee's info is in the table:
@@ -98,7 +98,7 @@ describe(`Weekend Salary Calculator:`, () => {
 
   it(`Adds multiple new employees' data to the table`, () => {
     const table = container.querySelector('table')
-    
+
     submitEmployee(container, testEmployees[0])
 
     // Verify that the first new employee's info is in the table:
@@ -120,7 +120,7 @@ describe(`Weekend Salary Calculator:`, () => {
 
   it(`Clears out the form inputs after a new employee is submitted`, () => {
     const table = container.querySelector('table')
-    
+
     submitEmployee(container, testEmployees[0])
 
     // Select all five employee inputs:
@@ -140,7 +140,7 @@ describe(`Weekend Salary Calculator:`, () => {
 
   it(`Updates the total monthly salary value when a single employee is added`, () => {
     const footer = container.querySelector('footer')
-    
+
     submitEmployee(container, testEmployees[0])
 
     expect(getByText(footer, /10001|10,001/)).toBeInTheDocument()
@@ -157,7 +157,7 @@ describe(`Weekend Salary Calculator:`, () => {
 
   it(`Applies the 'over-budget' CSS class to the footer when the total monthly salary exceeds $20,000`, () => {
     const footer = container.querySelector('footer')
-    
+
     submitEmployee(container, testEmployees[0])
     submitEmployee(container, testEmployees[1])
     submitEmployee(container, testEmployees[2])
@@ -167,11 +167,11 @@ describe(`Weekend Salary Calculator:`, () => {
 
   it(`Removes the correct employee table row when a delete button is clicked`, () => {
     const table = container.querySelector('table')
-    
+
     submitEmployee(container, testEmployees[0])
     submitEmployee(container, testEmployees[1])
     submitEmployee(container, testEmployees[2])
-    
+
     const tableButtons = table.querySelectorAll('button')
     const secondRowsButton = tableButtons[1]
 
@@ -200,13 +200,13 @@ describe(`Weekend Salary Calculator:`, () => {
   })
 
   // TODO Stretch Tests:
-    // Total monthly salary is correctly calculated after deleting an employee.
-    // Check for rounding logic.
-        // 24001.583 becomes 24001.58
-    // Check for money formatting:
-        // 24001 becomes $24,001.00
-        // 24001.583 becomes $24,000.58
-    // A new employee is not added to the DOM if:
-        // An input was not provided text
-        // A duplicate id value was provided
+  // Total monthly salary is correctly calculated after deleting an employee.
+  // Check for rounding logic.
+  // 24001.583 becomes 24001.58
+  // Check for money formatting:
+  // 24001 becomes $24,001.00
+  // 24001.583 becomes $24,000.58
+  // A new employee is not added to the DOM if:
+  // An input was not provided text
+  // A duplicate id value was provided
 })

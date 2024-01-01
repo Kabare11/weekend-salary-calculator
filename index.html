@@ -14,17 +14,17 @@
   <main>
     <h2>Add Employee</h2>
     <form id="form">
-      <input required type="text" id="firstNameInput" placeholder="First Name">
+      <input required data-testid="firstNameInput" type="text" id="firstNameInput" placeholder="First Name">
 
-      <input required type="text" id="lastNameInput" placeholder="Last Name">
+      <input required data-testid="lastNameInput" type="text" id="lastNameInput" placeholder="Last Name">
 
-      <input required type="number" id="idInput" placeholder="ID">
+      <input required data-testid="idInput" type="number" id="idInput" placeholder="ID">
 
-      <input required type="text" id="titleInput" placeholder="Title">
+      <input required data-testid="titleInput" type="text" id="titleInput" placeholder="Title">
 
-      <input required type="number" id="annualSalaryInput" placeholder="Annual Salary">
+      <input required data-testid="annualSalaryInput" type="number" id="annualSalaryInput" placeholder="Annual Salary">
 
-      <button id="submitButton">Submit</button>
+      <button data-testid="submitButton" id="submitButton">Submit</button>
     </form>
 
     <h2>Employees</h2>
@@ -44,18 +44,8 @@
     </table>
   </main>
 
-  <footer>
-
-    <p>Total Monthly</p>
-
-    <div id="monthly-total">
-
-      <!--THIS IS WHERE THE TOTAL MONTHLY DATA WILL BE RENDERED-->
-    </div>
-
-
-
-
+  <footer id="monthlyTotalFooter" class="">
+    Total Monthly: $0
   </footer>
   <script src="script.js"></script>
 </body>
